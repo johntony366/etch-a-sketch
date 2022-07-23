@@ -1,5 +1,6 @@
 const grid = document.querySelector('body #grid');
 const btn = document.querySelector('button');
+const color = document.querySelector('input');
 
 function createGrid(n) {
     grid.replaceChildren();
@@ -7,8 +8,20 @@ function createGrid(n) {
         const div = document.createElement('div');
         div.setAttribute('class', 'gridElement')
         div.style.width = `${100 / n}%`;
-        div.addEventListener('mouseover', () => {
-            div.classList.add('active');
+        let draw = false;
+        div.addEventListener('mousedown', (e) => {
+            console.log(e);
+            draw = true;
+        })
+        div.addEventListener('hover', (e) => {
+            if (true) {
+                console.log(e);
+                div.classList.add('active');
+                div.style.backgroundColor = color.value;
+            }
+        })
+        div.addEventListener('mouseup', () => {
+            draw = false;
         })
         grid.appendChild(div);
     }
